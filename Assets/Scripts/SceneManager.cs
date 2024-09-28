@@ -2,18 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System;
 
 public class SceneManager : MonoBehaviour
 {
     public static SceneManager Instance;
 
+    public event Action<Enemie> OnEnemieDie;
+
     public Player Player;
     public List<Enemie> Enemies;
+
     public GameObject Lose;
     public GameObject Win;
 
     private int currWave = 0;
     [SerializeField] private LevelConfig Config;
+
+    
+    [SerializeField] private Text _statsText;
+
+
+    
 
     private void Awake()
     {
@@ -33,10 +44,12 @@ public class SceneManager : MonoBehaviour
     public void RemoveEnemie(Enemie enemie)
     {
         Enemies.Remove(enemie);
-        if(Enemies.Count == 0)
+        OnEnemieDie?.Invoke(enemie);
+        if (Enemies.Count == 0)
         {
             SpawnWave();
         }
+        Debug.Log(Enemies.Count);
     }
 
     public void GameOver()
@@ -53,13 +66,14 @@ public class SceneManager : MonoBehaviour
         }
 
         var wave = Config.Waves[currWave];
+        
         foreach (var character in wave.Characters)
         {
-            Vector3 pos = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+            Vector3 pos = new Vector3(UnityEngine.Random.Range(-10, 10), 0, UnityEngine.Random.Range(-10, 10));
             Instantiate(character, pos, Quaternion.identity);
         }
         currWave++;
-
+        _statsText.text = "Total waves: " + Config.Waves.Length + "\nCurrent wave: " + currWave.ToString();
     }
 
     public void Reset()

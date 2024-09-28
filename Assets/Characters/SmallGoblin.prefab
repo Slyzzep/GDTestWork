@@ -14,15 +14,15 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 1d6a3a495edbf24439b7f6ca0d94afd8, type: 2}
     - target: {fileID: -4216859302048453862, guid: cb01db2707aa97a4e94efee03de71f52, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.015
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: cb01db2707aa97a4e94efee03de71f52, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.015
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: cb01db2707aa97a4e94efee03de71f52, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.015
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: cb01db2707aa97a4e94efee03de71f52, type: 3}
       propertyPath: m_LocalPosition.x
@@ -66,11 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: cb01db2707aa97a4e94efee03de71f52, type: 3}
       propertyPath: m_Name
-      value: Goblin
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: cb01db2707aa97a4e94efee03de71f52, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: SmallGoblin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -103,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2a8ee85d515c343a70e9b80700c61a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 2
-  Damage: 1
+  Hp: 1
+  Damage: 0.5
   AtackSpeed: 1
   AttackRange: 2
   AnimatorController: {fileID: 7475179364339281051}
@@ -118,7 +114,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4570157599844447218}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50

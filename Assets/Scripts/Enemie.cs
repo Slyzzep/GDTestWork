@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,13 +16,18 @@ public class Enemie : MonoBehaviour
     public NavMeshAgent Agent;
 
     private float lastAttackTime = 0;
-    private bool isDead = false;
+    public bool isDead { private set; get; } = false;
 
 
-    private void Start()
+
+
+
+private void Start()
     {
         SceneManager.Instance.AddEnemie(this);
         Agent.SetDestination(SceneManager.Instance.Player.transform.position);
+        
+
 
     }
 
@@ -54,12 +60,13 @@ public class Enemie : MonoBehaviour
         else
         {
             Agent.SetDestination(SceneManager.Instance.Player.transform.position);
+            Agent.isStopped = false;
         }
         AnimatorController.SetFloat("Speed", Agent.speed); 
-        //Debug.Log(Agent.speed);
+        
 
     }
-
+   
 
 
     private void Die()
@@ -67,6 +74,7 @@ public class Enemie : MonoBehaviour
         SceneManager.Instance.RemoveEnemie(this);
         isDead = true;
         AnimatorController.SetTrigger("Die");
+        
     }
 
 }
