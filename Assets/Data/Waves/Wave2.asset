@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Wave2
   m_EditorClassIdentifier: Assembly-CSharp::Wave
   Characters:
+  - {fileID: 4570157599844447218, guid: 4c34fad82d8582f40a00c43d3128284a, type: 3}
   - {fileID: 4570157599844447218, guid: d2b940abc19f51b42a767f53b93d99c8, type: 3}
   - {fileID: 4570157599844447218, guid: d2b940abc19f51b42a767f53b93d99c8, type: 3}
+  - {fileID: 4570157599844447218, guid: d2b940abc19f51b42a767f53b93d99c8, type: 3}
+  - {fileID: 4570157599844447218, guid: ddba881cae11e5543ae4081a1d462ce5, type: 3}

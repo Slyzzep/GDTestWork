@@ -23,7 +23,7 @@ public class SceneManager : MonoBehaviour
     
     [SerializeField] private Text _statsText;
 
-
+    public bool _haveSplitEnemy = false;
     
 
     private void Awake()
@@ -45,11 +45,11 @@ public class SceneManager : MonoBehaviour
     {
         Enemies.Remove(enemie);
         OnEnemieDie?.Invoke(enemie);
+       if (_haveSplitEnemy) return;
         if (Enemies.Count == 0)
         {
             SpawnWave();
         }
-        Debug.Log(Enemies.Count);
     }
 
     public void GameOver()

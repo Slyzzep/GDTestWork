@@ -14,10 +14,10 @@ public class Player : MonoBehaviour
     [SerializeField] private Image _superAttackButtonImg;
     [SerializeField] private Button _superAttackButton;
 
-    public float Hp;
-    public float Damage;
-    public float AtackSpeed;
-    public float AttackRange = 2;
+    [SerializeField] public float Hp;
+    [SerializeField] private float Damage;
+    [SerializeField] private float AtackSpeed;
+    [SerializeField] private float AttackRange = 2;
     [SerializeField] private float _superAttackSpeed;   
 
     private float _currDist;
@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 
     private float lastAttackTime = 0;
     private bool isDead = false;
-        public Animator AnimatorController;
+    public Animator AnimatorController;
 
     [SerializeField] private Transform _camTransform;
     private float _horizontalInput;
@@ -35,9 +35,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int _moveSpeed;
     private void Start()
     {
-        SceneManager.Instance.OnEnemieDie += Heal;
-
-       
+        SceneManager.Instance.OnEnemieDie += Heal;     
     }
     private void OnDestroy()
     {
@@ -79,12 +77,13 @@ public class Player : MonoBehaviour
                 
             if (distance < closestDistance)
             {
-                closestEnemie = enemie;
-               
+                closestEnemie = enemie; 
             }
 
         }
+       
         _currClosestEnemie = closestEnemie;
+
         if (closestEnemie != null)
         {
             var distance = Vector3.Distance(transform.position, closestEnemie.transform.position);
@@ -108,6 +107,7 @@ public class Player : MonoBehaviour
         {
             _superAttackButtonImg.fillAmount = (Time.time - lastAttackTime) / _superAttackSpeed;
         }
+       
         InputButtons();
         
     }
@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
     {       
             if (Time.time - lastAttackTime > AtackSpeed )
             {
-                lastAttackTime = Time.time;
+            lastAttackTime = Time.time;
             AnimatorController.SetTrigger("Attack");
             if (_currDist <= AttackRange)
             {
@@ -127,14 +127,14 @@ public class Player : MonoBehaviour
     private void SuperAttack()
     {
         if (Time.time - lastAttackTime > _superAttackSpeed)
-        {
-            
+        {  
             lastAttackTime = Time.time;
             AnimatorController.SetTrigger("SuperAttack");
             _superAttackButtonImg.fillAmount = 0f;
-         if (_currDist <= AttackRange)
+
+            if (_currDist <= AttackRange)
             {
-                _currClosestEnemie.Hp -= Damage + 4;
+                _currClosestEnemie.Hp -= Damage + 2;
             }
         }
     }
@@ -147,7 +147,6 @@ public class Player : MonoBehaviour
 
         if (_horizontalInput != 0 || _verticalInput != 0)
         {
-
             PlayerMove();
             AnimatorController.SetFloat("Speed", 1);
         }
@@ -187,7 +186,6 @@ public class Player : MonoBehaviour
     private void Heal(Enemie enemie)
     {
         Hp += 2;
-       
     }
     private void Die()
     {

@@ -700,7 +700,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.4548249, y: -0, z: -0, w: 0.8905809}
-  m_LocalPosition: {x: 0.2, y: 28.6, z: -25.3}
+  m_LocalPosition: {x: 0.2, y: 19.85, z: -18.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -810,8 +810,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -83.3, y: 40}
-  m_SizeDelta: {x: 100, y: 50}
+  m_AnchoredPosition: {x: -66.64035, y: 42.386673}
+  m_SizeDelta: {x: 118.3266, y: 59.1633}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1240122005
 MonoBehaviour:
@@ -942,6 +942,7 @@ MonoBehaviour:
   Win: {fileID: 527944048}
   Config: {fileID: 11400000, guid: 8153ea4e5491d8543b373d0f03962714, type: 2}
   _statsText: {fileID: 1529535759}
+  _haveSplitEnemy: 0
 --- !u!4 &1283724813
 Transform:
   m_ObjectHideFlags: 0
@@ -1415,8 +1416,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -212, y: 40}
-  m_SizeDelta: {x: 100, y: 50}
+  m_AnchoredPosition: {x: -218.9266, y: 42.386703}
+  m_SizeDelta: {x: 118.3266, y: 59.1633}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2103604806
 MonoBehaviour:
@@ -1530,7 +1531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5115665549051153157, guid: 98fa2bf115616174da3132f7a380aca3, type: 3}
       propertyPath: _moveSpeed
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5115665549051153157, guid: 98fa2bf115616174da3132f7a380aca3, type: 3}
       propertyPath: _camTransform
@@ -1538,7 +1539,7 @@ PrefabInstance:
       objectReference: {fileID: 963194228}
     - target: {fileID: 5115665549051153157, guid: 98fa2bf115616174da3132f7a380aca3, type: 3}
       propertyPath: _superAttackSpeed
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5115665549051153157, guid: 98fa2bf115616174da3132f7a380aca3, type: 3}
       propertyPath: _superAttackButton

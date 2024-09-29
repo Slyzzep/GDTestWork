@@ -26,9 +26,6 @@ private void Start()
     {
         SceneManager.Instance.AddEnemie(this);
         Agent.SetDestination(SceneManager.Instance.Player.transform.position);
-        
-
-
     }
 
     private void Update()
