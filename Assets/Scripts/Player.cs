@@ -107,8 +107,8 @@ public class Player : MonoBehaviour
         {
             _superAttackButtonImg.fillAmount = (Time.time - lastAttackTime) / _superAttackSpeed;
         }
-       
-        InputButtons();
+        PlayerMove();  
+        
         
     }
     private void DefaultAttack()
@@ -139,38 +139,34 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void InputButtons()
-    {
-        if (isDead) return;
-        _horizontalInput = Input.GetAxisRaw("Horizontal");
-        _verticalInput = Input.GetAxisRaw("Vertical");
+ 
 
+    public void PlayerMove()
+    {
+        _horizontalInput = InputManager.Instance._horizontalInput;
+        _verticalInput = InputManager.Instance._verticalInput;
         if (_horizontalInput != 0 || _verticalInput != 0)
         {
-            PlayerMove();
+            Vector3 forward = _camTransform.forward;
+            Vector3 right = _camTransform.right;
+
+            forward.y = 0f;
+            right.y = 0f;
+
+            forward.Normalize();
+            right.Normalize();
+
+            Vector3 moveDirection = forward * _verticalInput + right * _horizontalInput;
+
+            transform.position += moveDirection * _moveSpeed * Time.deltaTime;
+            transform.rotation = Quaternion.LookRotation(moveDirection);
             AnimatorController.SetFloat("Speed", 1);
         }
         else
         {
             AnimatorController.SetFloat("Speed", 0);
         }
-    }
-
-    public void PlayerMove()
-    {
-        Vector3 forward = _camTransform.forward;
-        Vector3 right = _camTransform.right;
-
-        forward.y = 0f;
-        right.y = 0f;
-
-        forward.Normalize();
-        right.Normalize();
-
-        Vector3 moveDirection = forward * _verticalInput + right * _horizontalInput;
-
-        transform.position += moveDirection * _moveSpeed * Time.deltaTime;
-        transform.rotation = Quaternion.LookRotation(moveDirection);
+       
         
     }
     public void DefaultAttackOnClick()

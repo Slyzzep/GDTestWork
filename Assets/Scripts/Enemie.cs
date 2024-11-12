@@ -13,19 +13,20 @@ public class Enemie : MonoBehaviour
 
 
     public Animator AnimatorController;
-    public NavMeshAgent Agent;
+    [SerializeField] public NavMeshAgent Agent;
 
     private float lastAttackTime = 0;
     public bool isDead { private set; get; } = false;
+    public event Action OnDie;
 
 
 
 
-
-private void Start()
+    private void Start()
     {
         SceneManager.Instance.AddEnemie(this);
         Agent.SetDestination(SceneManager.Instance.Player.transform.position);
+       
     }
 
     private void Update()
@@ -71,7 +72,7 @@ private void Start()
         SceneManager.Instance.RemoveEnemie(this);
         isDead = true;
         AnimatorController.SetTrigger("Die");
-        
+        OnDie?.Invoke();
     }
 
 }

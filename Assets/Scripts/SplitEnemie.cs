@@ -4,26 +4,29 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.TextCore.Text;
 
-public class SplitEnemie : MonoBehaviour
+public class SplitEnemie : Enemie
 {
     public GameObject[] Characters;
 
 
-    private Enemie _enemie;
-    private void Start()
+    private void OnEnable()
     {
-        _enemie = GetComponent<Enemie>();
+        OnDie += DeadCheck; 
     }
 
-
-    private void Update()
+    private void OnDisable()
+    {
+        OnDie -= DeadCheck; 
+    }
+    private void FixedUpdate()
     {
         SceneManager.Instance._haveSplitEnemy = true;
-        DeadCheck();
+
     }
+
     private void DeadCheck()
     {
-        if (_enemie.isDead)
+        if (isDead)
         {
             Vector3 _spawnpos = transform.position;
             foreach (var character in Characters)
